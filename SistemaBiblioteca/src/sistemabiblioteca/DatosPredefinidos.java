@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class DatosPredefinidos {
     public static String[] nombres = {"Carlos", "Maria", "Luis", "Ana", "Jorge", "Lucia"};
-    public static String[] apellidos = {"Soto", "Ramirez", "Lopez", "Gomez", "Diaz", "Vargas"};
+    public static String[] apellidos = {"Sotos", "Ramirez", "Lopez", "Gomez", "Diaz", "Vargas"};
 
     // Generar nombre aleatorio
     public static String generarNombreCompleto() {

@@ -1,6 +1,5 @@
 package SistemaBiblioteca;
 import javax.swing.JOptionPane; 
-import sistemabiblioteca.libro.Libro;
 /* Estudiantes:
    Valeria Ledezma
    Amanda Calderón 
