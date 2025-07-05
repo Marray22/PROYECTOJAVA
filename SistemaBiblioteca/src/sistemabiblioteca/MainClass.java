@@ -39,6 +39,7 @@ public class MainClass {
                 case 1:
                     JOptionPane.showMessageDialog(null, "Biblioteca");
                     
+                    
                     break;
                 case 2:
                     JOptionPane.showMessageDialog(null, "Préstamos");
@@ -49,6 +50,7 @@ public class MainClass {
                     break;
                 case 4:
                     JOptionPane.showMessageDialog(null, "Socios");
+                    
                     break;
                
                 case 5:

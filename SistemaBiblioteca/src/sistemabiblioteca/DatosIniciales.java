@@ -2,7 +2,7 @@ package sistemabiblioteca;
 import java.util.Random;
 
 
-public class DatosPredefinidos {
+public class DatosIniciales {
     public static String[] nombres = {"Carlos", "Maria", "Luis", "Ana", "Jorge", "Lucia"};
     public static String[] apellidos = {"Sotos", "Ramirez", "Lopez", "Gomez", "Diaz", "Vargas"};
 
