@@ -3,6 +3,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
+enum EstadoSocio {
+    ACTIVO,
+    MOROSO,
+    SUSPENDIDO,
+    INACTIVO
+}
+
 public class Socio {
     private String idSocio;
     private String NombreCompleto;
@@ -76,10 +83,6 @@ public class Socio {
         System.out.println("-------------------------------");
     }
     
-    public enum EstadoSocio {
-    ACTIVO,
-    MOROSO,
-    SUSPENDIDO,
-    INACTIVO
+
 }
-}
+

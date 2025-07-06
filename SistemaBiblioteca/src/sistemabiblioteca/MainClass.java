@@ -12,57 +12,40 @@ public class MainClass {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-          while (true) {
-            String menu = "Seleccione una opción:\n"
-                        + "1. Biblioteca\n"
-                        + "2. Préstamos\n"
-                        + "3. Catálogo\n"
-                        + "4. Socios\n"
-                        + "5. Reportes\n"
-                        + "6. Salir";
+        String[] opciones = {"Biblioteca", "Préstamos", "Catálogo", "Socios", "Reportes", "Salir"};
 
-            String opcionMenu = JOptionPane.showInputDialog(null, menu, "Menú Principal", JOptionPane.QUESTION_MESSAGE);
+        while (true) {
+            int seleccion = JOptionPane.showOptionDialog(
+                null, 
+                "Seleccione una opción:", 
+                "Menú Principal",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE,
+                null,
+                opciones,
+                opciones[0]
+            );
 
-            if (opcionMenu == null) { // Usuario presionó Cancelar
+            if (seleccion == 0) {
+                System.out.println("Biblioteca seleccionada");
+                // Llama al método o clase Biblioteca aquí
+            } else if (seleccion == 1) {
+                System.out.println("Préstamos seleccionada");
+                // Llama al método o clase Préstamos aquí
+            } else if (seleccion == 2) {
+                System.out.println("Catálogo seleccionada");
+                // Llama al método o clase Catálogo aquí
+            } else if (seleccion == 3) {
+                System.out.println("Socios seleccionada");
+                // Llama al método o clase Socios aquí
+            } else if (seleccion == 4) {
+                System.out.println("Reportes seleccionada");
+                // Llama al método o clase Reportes aquí
+            } else if (seleccion == 5 || seleccion == JOptionPane.CLOSED_OPTION) {
+                JOptionPane.showMessageDialog(null, "Gracias por usar el sistema. ¡Hasta luego!");
                 break;
-            }
-
-            int opcion = 0;
-            try {
-                opcion = Integer.parseInt(opcionMenu);
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Ingrese un número válido", "Error", JOptionPane.ERROR_MESSAGE);
-                continue;
-            }
-
-            switch (opcion) {
-                case 1:
-                    JOptionPane.showMessageDialog(null, "Biblioteca");
-                    
-                    
-                    break;
-                case 2:
-                    JOptionPane.showMessageDialog(null, "Préstamos");
-                    
-                    break;
-                case 3:
-                    JOptionPane.showMessageDialog(null, "Catálogo");
-                    break;
-                case 4:
-                    JOptionPane.showMessageDialog(null, "Socios");
-                    
-                    break;
-               
-                case 5:
-                    JOptionPane.showMessageDialog(null, "Reportes");
-                    break;
-                case 6:
-                    JOptionPane.showMessageDialog(null, "Salir");
-                    System.exit(0);
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Opción no válida");
-                    break;
+            } else {
+                JOptionPane.showMessageDialog(null, "Opción no válida");
             }
         }
     }
