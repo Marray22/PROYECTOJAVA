@@ -5,7 +5,6 @@
 package sistemabiblioteca;
 
 
-
  public class Libro {
  public enum Genero {NOVELA, CIENCIA_FICCION, HISTORIA, INFANTIL, POESIA, ENSAYO }
 

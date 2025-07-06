@@ -1,4 +1,8 @@
-package SistemaBiblioteca;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Sistemabiblioteca;
 import javax.swing.JOptionPane; 
 /* Estudiantes:
    Valeria Ledezma
@@ -12,6 +16,13 @@ public class MainClass {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        Libro[] libros = DatosIniciales.generarLibros(50);
+        Socio[] socios = DatosIniciales.generarSocios(30);
+        MenuBiblioteca menuBiblioteca = new MenuBiblioteca(libros, socios);
+
+        
+        
         String[] opciones = {"Biblioteca", "Préstamos", "Catálogo", "Socios", "Reportes", "Salir"};
 
         while (true) {
@@ -28,19 +39,21 @@ public class MainClass {
 
             if (seleccion == 0) {
                 System.out.println("Biblioteca seleccionada");
-                // Llama al método o clase Biblioteca aquí
+                menuBiblioteca.mostrarInformacionBiblioteca();
+               
+                // Llama al método de las clase menuBiblioteca con un mostrar
             } else if (seleccion == 1) {
                 System.out.println("Préstamos seleccionada");
-                // Llama al método o clase Préstamos aquí
+                // Llama al método de las clase menuprestamos con un mostrar
             } else if (seleccion == 2) {
                 System.out.println("Catálogo seleccionada");
-                // Llama al método o clase Catálogo aquí
+                // Llama al método de las clase menucatalogo con un mostrar
             } else if (seleccion == 3) {
                 System.out.println("Socios seleccionada");
-                // Llama al método o clase Socios aquí
+                // Llama al método de las clase menusocio con un mostrar
             } else if (seleccion == 4) {
                 System.out.println("Reportes seleccionada");
-                // Llama al método o clase Reportes aquí
+                // Llama al método de las clase menuReporte con un mostrar
             } else if (seleccion == 5 || seleccion == JOptionPane.CLOSED_OPTION) {
                 JOptionPane.showMessageDialog(null, "Gracias por usar el sistema. ¡Hasta luego!");
                 break;
