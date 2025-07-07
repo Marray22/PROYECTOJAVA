@@ -4,11 +4,12 @@
  */
 package sistemabiblioteca;
 
+enum Genero {NOVELA, CIENCIA_FICCION, HISTORIA, INFANTIL, POESIA, ENSAYO }
+
+enum EstadoLibro {DISPONIBLE, PRESTADO, EN_REPARACION, EXTRAVIADO}
 
  public class Libro {
- public enum Genero {NOVELA, CIENCIA_FICCION, HISTORIA, INFANTIL, POESIA, ENSAYO }
-
- public enum EstadoLibro {DISPONIBLE, PRESTADO, EN_REPARACION, EXTRAVIADO}
+    
     private String isbn;
     private String titulo;
     private String autor;
@@ -101,19 +102,4 @@ package sistemabiblioteca;
  public void setVecesPrestado(int vecesPrestado) {
      this.vecesPrestado = vecesPrestado;
  }
- 
-
-
- public void mostrarLibro() {
-     System.out.println("ISBN: " + isbn);
-     System.out.println("Título: " + titulo);
-     System.out.println("Autor: " + autor);
-     System.out.println("Género: " + genero);
-     System.out.println("Editorial: " + editorial);
-     System.out.println("Año de publicación: " + anioPublicacion);
-     System.out.println("Estado: " + estadoLibro);
-     System.out.println("Veces prestado: " + vecesPrestado);
-     System.out.println("----------------------------");
  }
-
-}

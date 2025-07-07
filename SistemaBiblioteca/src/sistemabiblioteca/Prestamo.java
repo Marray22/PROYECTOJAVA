@@ -47,7 +47,7 @@ public class Prestamo {
         this.estadoPrestamo = EstadoPrestamo.ACTIVO;
         this.multaGeneradaEstePrestamo = 0.0;
 
-        libro.setEstadoLibro(Libro.EstadoLibro.PRESTADO);
+        libro.setEstadoLibro(EstadoLibro.PRESTADO);
     }
 
     public void devolver(String fechaRealStr) {
@@ -67,26 +67,14 @@ public class Prestamo {
                 this.estadoPrestamo = EstadoPrestamo.DEVUELTO_A_TIEMPO;
             }
 
-            libro.setEstadoLibro(Libro.EstadoLibro.DISPONIBLE);
+            libro.setEstadoLibro(EstadoLibro.DISPONIBLE);
 
         } catch (ParseException e) {
             System.out.println("Error: Fecha de devolución inválida.");
         }
     }
-
-    public void mostrarPrestamo() {
-        System.out.println("ID Préstamo: " + idPrestamo);
-        System.out.println("Socio: " + socio.getNombreCompleto() + " - ID: " + socio.getIdSocio());
-        System.out.println("Libro: " + libro.getTitulo() + " - ISBN: " + libro.getIsbn());
-        System.out.println("Fecha de préstamo: " + fechaPrestamo);
-        System.out.println("Fecha estimada de devolución: " + fechaDevolucionEstimada);
-        System.out.println("Fecha real de devolución: " + (fechaDevolucionReal != null ? fechaDevolucionReal : "No devuelto"));
-        System.out.println("Estado del préstamo: " + estadoPrestamo);
-        System.out.println("Multa generada: ₡" + multaGeneradaEstePrestamo);
-        System.out.println("------------------------");
-    }
     
-    //Getters
+  
     public int getIdPrestamo() {
         return idPrestamo;
     }

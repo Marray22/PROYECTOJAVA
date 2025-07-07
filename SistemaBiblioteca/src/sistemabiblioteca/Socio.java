@@ -18,7 +18,6 @@ enum EstadoSocio{
         INACTIVO
 }
 
-    
 public class Socio {
     
     
@@ -94,17 +93,5 @@ public class Socio {
     public void setCantidadLibrosPrestadosActual(int cantidadLibrosPrestadosActual) {
         this.cantidadLibrosPrestadosActual = cantidadLibrosPrestadosActual;
     }
-
-    // Mostrar información
-    public void mostrarInformacion() {
-        System.out.println("ID Socio: " + idSocio);
-        System.out.println("Nombre: " + nombreCompleto);
-        System.out.println("Fecha de registro: " + fechaRegistro);
-        System.out.println("Estado: " + estadoSocio);
-        System.out.println("Multas acumuladas: " + multasAcumuladas);
-        System.out.println("Libros prestados actualmente: " + cantidadLibrosPrestadosActual);
-        System.out.println("-------------------------------");
-    }
-    
 
 }

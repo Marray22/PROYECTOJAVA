@@ -17,9 +17,11 @@ public class MainClass {
      */
     public static void main(String[] args) {
         
-        Libro[] libros = DatosIniciales.generarLibros(50);
+        //esta parte de los arreglos me esta generando error, sin embargo, pude investigar que es como algo realcionado a carpetas, pero viendo la clase libro y socio esta en un .javax
+        
+     /* Libro[] libros = DatosIniciales.generarLibros(50);
         Socio[] socios = DatosIniciales.generarSocios(30);
-        MenuBiblioteca menuBiblioteca = new MenuBiblioteca(libros, socios);
+        MenuBiblioteca menuBiblioteca = new MenuBiblioteca(libros, socios);*/
 
         
         
@@ -38,21 +40,19 @@ public class MainClass {
             );
 
             if (seleccion == 0) {
-                System.out.println("Biblioteca seleccionada");
-                menuBiblioteca.mostrarInformacionBiblioteca();
-               
+                //menuBiblioteca.mostrarInformacionBiblioteca();
                 // Llama al método de las clase menuBiblioteca con un mostrar
             } else if (seleccion == 1) {
-                System.out.println("Préstamos seleccionada");
+                
                 // Llama al método de las clase menuprestamos con un mostrar
             } else if (seleccion == 2) {
-                System.out.println("Catálogo seleccionada");
+                
                 // Llama al método de las clase menucatalogo con un mostrar
             } else if (seleccion == 3) {
-                System.out.println("Socios seleccionada");
+               
                 // Llama al método de las clase menusocio con un mostrar
             } else if (seleccion == 4) {
-                System.out.println("Reportes seleccionada");
+                
                 // Llama al método de las clase menuReporte con un mostrar
             } else if (seleccion == 5 || seleccion == JOptionPane.CLOSED_OPTION) {
                 JOptionPane.showMessageDialog(null, "Gracias por usar el sistema. ¡Hasta luego!");
