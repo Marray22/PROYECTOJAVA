@@ -43,46 +43,49 @@ public class Prestamo {
 
         libro.setEstadoLibro(EstadoLibro.PRESTADO); // Cambia el estado del libro si esta prestado
     }
-
-    
-    } // Devuelve la fecha en que se prestó el libro
-    public LocalDate getFechaPrestamo(){
-        return fechaPrestamo;
-    }
-    
-    public LocalDate getFechaDevolucionEstimada(){ // Devuelve la fecha estimada de devolución 
-        return fechaDevolucionEstimada;
-    
-    }
-  
-    public LocalDate getFechaDevolucionReal(){ //Permite establecer la fecha real de devolución    
-        return fechaDevolucionReal; 
-        
-    }
-    
-    public void setMultaGenerada(double multa){ // Permite establecer una multa manualmente
-    this.multaGeneradaEstePrestamo = multa;
-    }
-    
-    public void setEstadoPrestamo(EstadoPrestamo estado){ // Permite cambiar manualmente el estado del prestamo
-    this.estadoPrestamo = estado;
-    }
-    
-    public int getIdPrestamo() { // Devuelce el Id del prestamo
+     public int getIdPrestamo() {
         return idPrestamo;
     }
 
-    public EstadoPrestamo getEstadoPrestamo() { // Devuelve el estado actual del prestamo
+    public Socio getSocio() {
+        return socio;
+    }
+
+    public Libro getLibro() {
+        return libro;
+    }
+
+    public LocalDate getFechaPrestamo() {
+        return fechaPrestamo;
+    }
+
+    public LocalDate getFechaDevolucionEstimada() {
+        return fechaDevolucionEstimada;
+    }
+
+    public LocalDate getFechaDevolucionReal() {
+        return fechaDevolucionReal;
+    }
+
+    public void setFechaDevolucionReal(LocalDate fecha) {
+        this.fechaDevolucionReal = fecha;
+    }
+
+    public EstadoPrestamo getEstadoPrestamo() {
         return estadoPrestamo;
     }
 
-    public double getMultaGeneradaEstePrestamo() { //Devuelve el monto de la multa generada
+    public void setEstadoPrestamo(EstadoPrestamo estado) {
+        this.estadoPrestamo = estado;
+    }
+
+    public double getMultaGeneradaEstePrestamo() {
         return multaGeneradaEstePrestamo;
     }
-    public Libro getLibro(){ //Devuelve el libro asociado al prestamo
-    return libro;
-    }
-    public Socio getSocio() { //Devuelve al socio que tiene el prestamo 
-    return socio;
+
+    public void setMultaGenerada(double multa) {
+        this.multaGeneradaEstePrestamo = multa;
     }
 }
+
+    
