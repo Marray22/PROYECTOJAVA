@@ -1,15 +1,10 @@
 
 package sistemabiblioteca;
 
-import java.text.ParseException; // para capturar errores al covertir textos en fechas
-import java.text.SimpleDateFormat;
 import java.time.LocalDate; // sirve para manejar fechas modernas
-import java.util.Calendar; //suma días a una fecha 
-import java.util.Date;
 
 public class Prestamo {
 
-    
     public enum EstadoPrestamo {
         ACTIVO,
         DEVUELTO_A_TIEMPO,
