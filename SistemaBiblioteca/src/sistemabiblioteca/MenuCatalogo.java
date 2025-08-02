@@ -5,8 +5,16 @@ import java.util.ArrayList;
 // Inicia la clase Menu Catalogo. contiene los metodos para gestionar el catalogo
 public class MenuCatalogo {
     private static ArrayList<Libro> libros = new ArrayList<>(); // Almacena todos los libros registrados en el sistema
-    private static int contadorIsbn = 1; // Contador que se usa para generar un codigo ISBN automatico
-    private static final int LIMITE_LIBROS = 50; // Limite aximo de libros permitidos 
+    private  int contadorIsbn = 1; // Contador que se usa para generar un codigo ISBN automatico
+    private final int LIMITE_LIBROS = 50; // Limite aximo de libros permitidos 
+
+    public MenuCatalogo(Arraylist<Libro> librosExistentes){
+        this.libros = librosExistentes;
+
+        if (!libros.isEmpty()){
+            contadorIsbn = libros.size() + 1;
+        }
+    }
 // Metodo principal que muestra el menu de opciones del catalogo
     public static void mostrarMenu() {
         String[] opciones = { //Arreglo de opciones que se mostraran en el cuadro de dialogo
@@ -33,22 +41,22 @@ public class MenuCatalogo {
         } while (opcion != 4);
     }
 // Metodo privado y estaico. Muestra todos los libros de la consola
-    private static void mostrarCatalogo() {
+    private void mostrarCatalogo() {
         //Si la lista esta vacia, muestra un mensaje por consola. Si no está vacía, entra en el else para mostrar libros
         if (libros.isEmpty()) {
-            System.out.println("No hay libros registrados en el catálogo.");
-        } else {
+            JOptionPane.showMessageDialog(null,"No hay libros registrados en el catálogo.");
+            return;
+        } 
+        StringBuilder sb = new StringBuielder("Catalogo completo:\n\n")
             //Recorre cada objeto (Libro) dentro de la lista Libros
             for (Libro libro : libros) {
-                System.out.println(libro);
-                System.out.println("--------------------------------");
+                sb.append(libro).append("\n--------------------------------\n");
             }
-        }
         //Muestra una ventana emergente informando al usuario que los libros se imprimieron en la consola
-        JOptionPane.showMessageDialog(null, "Catálogo completo mostrado en consola.");
+        JOptionPane.showMessageDialog(null, sb.toString());
     }
-// Metodo privado y estatico que permite registrar un nuevo libro en el sistema
-    private static void agregarLibro() {
+// Metodo privado  que permite registrar un nuevo libro en el sistema
+    private  void agregarLibro() {
         // Verifica si ya alcanzo el limite de 50 libros
         if (libros.size() >= LIMITE_LIBROS) {
             JOptionPane.showMessageDialog(null, "Límite máximo de libros (50) alcanzado.");
@@ -58,21 +66,21 @@ public class MenuCatalogo {
         String isbn = "LIB-" + contadorIsbn++;
 // Pide al usuario ingresar el titulo del libro, si cancela o cierra el cuadro se sale del metodo
         String titulo = JOptionPane.showInputDialog("Ingrese el título del libro:");
-        if (titulo == null) return;
+        if (titulo == null || titulo.trim.().isEmpty()) return;
 // Pide el nombre del autor y verifica si el usuario canceló
         String autor = JOptionPane.showInputDialog("Ingrese el autor del libro:");
-        if (autor == null) return;
+        if (autor == null || autor.trim.().isEmpty()) return;
 //  Pide el nombre de la editorial del libro
         String editorial = JOptionPane.showInputDialog("Ingrese la editorial:");
-        if (editorial == null) return;
+        if (editorial == null || editorial.trim.().isEmpty()) return;
 // Pide el año de publicación, si se cancela se detiene el metodo
         int anio = 0;
         while (true) {
-            String input = JOptionPane.showInputDialog("Ingrese el año de publicación:");
-            if (input == null) return;
+            String anioStr = JOptionPane.showInputDialog("Ingrese el año de publicación:");
+            if (anioStr == null) return;
 // Intenta convertir el año a entero, si es válido o es menor o igual a 0, lanza error y entra al catch
             try {
-                anio = Integer.parseInt(input);
+                anio = Integer.parseInt(anioStr);
                 if (anio <= 0) throw new NumberFormatException();
                 break;
             } catch (NumberFormatException e) {
@@ -92,8 +100,8 @@ public class MenuCatalogo {
 // Muestra un mensaje confirmando que el libro fue agregado y muestra la info del libro
         JOptionPane.showMessageDialog(null, "Libro agregado correctamente:\n" + nuevo);
     }
-// Metodo privado y estatico que permite al usuario elegir un genero literario para un libro
-    private static Genero seleccionarGenero() {
+// Metodo privado  que permite al usuario elegir un genero literario para un libro
+    private  Genero seleccionarGenero() {
         // Obtiene los valores definidos en el enum
         Genero[] valores = Genero.values();
         //Crea un arreglo de String que tendrá los nombres de los generos, con e mismo tamaño que el array
@@ -107,8 +115,8 @@ public class MenuCatalogo {
 // Si el usuario selleccionó un botón valido, devuelve el valor correspondiente del enum, se se cansela se devuelve null
         return (seleccion >= 0) ? valores[seleccion] : null;
     }
-// Metodo privado y estatico, su funcion es buscar un libro especifico en la lista por medio de su codigo
-    private static Libro buscarLibroPorIsbn(String isbn) {
+// Metodo privado, su funcion es buscar un libro especifico en la lista por medio de su codigo
+    private Libro buscarLibroPorIsbn(String isbn) {
         // Recorre cada objeto dentro de la lista libros
         for (Libro libro : libros) {
             // Compara el isbn de cada libro con el ISBN buscado
@@ -119,8 +127,8 @@ public class MenuCatalogo {
         // Sitermina de recorrer la lista y no encontro coincidencias, devuelve null
         return null;
     }
-// Metodo privado y estatico que permite modificar los datos de un libro existente buscandolo por su ISBN
-    private static void editarLibro() {
+// Metodo privado que permite modificar los datos de un libro existente buscandolo por su ISBN
+    private void editarLibro() {
         // Solicita al usuario que ingrese el ISBn del libro que quiere editar
         String isbn = JOptionPane.showInputDialog("Ingrese el ISBN del libro a editar:");
         if (isbn == null) return;
@@ -129,14 +137,11 @@ public class MenuCatalogo {
         // Si no se encuentra el libro, muestra un mensaje informando al usuario, da opcion con otro ISBN "YES"
         // Llama al metodo de nuevo, si elije no finaliza 
         if (libro == null) {
-            int opcion = JOptionPane.showConfirmDialog(null,
-                "El libro con ISBN '" + isbn + "' no existe.\n¿Desea ingresar otro ISBN?",
-                "No encontrado", JOptionPane.YES_NO_OPTION);
-            if (opcion == JOptionPane.YES_OPTION) editarLibro();
+            JOptionPane.showMessageDialog(null, "Libro no encontrado. ")
             return;
         }
 // Crea un arreglo con los campos que el ususario puede editar, también delcara la variable para saber que campo elegió
-        String[] campos = {"Título", "Autor", "Editorial", "Año Pub.", "Género", "Atrás"};
+        String[] campos = {"Título", "Autor", "Editorial", "Año Pub.", "Género", "Cancelar"};
         int opcion;
 //  Muestra opciones para seleccionar que quiere modificar, también muestra los datos actuales del libro
         do {
@@ -147,17 +152,17 @@ public class MenuCatalogo {
             switch (opcion) {
                 case 0 -> {
                     String nuevo = JOptionPane.showInputDialog("Nuevo título:");
-                    if (nuevo != null) libro.setTitulo(nuevo);
+                    if (nuevo != null  && !nuevo.trim().isEmpty()) libro.setTitulo(nuevo);
                 }
 // Para modificar el autor 
                 case 1 -> {
                     String nuevo = JOptionPane.showInputDialog("Nuevo autor:");
-                    if (nuevo != null) libro.setAutor(nuevo);
+                    if (nuevo != null  && !nuevo.trim().isEmpty()) libro.setAutor(nuevo);
                 }
 // Para cambiar la editorial del libro
                 case 2 -> {
                     String nuevo = JOptionPane.showInputDialog("Nueva editorial:");
-                    if (nuevo != null) libro.setEditorial(nuevo);
+                    if (nuevo != null  && !nuevo.trim().isEmpty()) libro.setEditorial(nuevo);
                 }
 // Muestra un cuadro en el que se ingresa un nuevo año, si se cancela se sale del ciclo 
                 case 3 -> {
@@ -167,8 +172,8 @@ public class MenuCatalogo {
 // Intenta convertir el texto a entero, si es valido y mayor a 0 actualiza el año, si no muestra un mensaje con error
                         try {
                             int nuevoAnio = Integer.parseInt(nuevo);
-                            if (nuevoAnio > 0) {
-                                libro.setAnioPublicacion(nuevoAnio);
+                            if (anio > 0) {
+                                libro.setAnioPublicacion(anio);
                                 break;
                             }
                         } catch (NumberFormatException ignored) {}
@@ -182,10 +187,10 @@ public class MenuCatalogo {
                 }
             }
 // El ciclo se repite mientras el usuario no presione atras
-        } while (opcion != 5);
+        } while (opcion != 5 && opcion != JOptionPane.CLOSED_OPTION);
     }
 // Permite al usuario cambiar el estado de un libro
-    private static void cambiarEstadoLibro() {
+    private void cambiarEstadoLibro() {
         // Pide al usuario el ISBN del libro al que quiere cambiarle el estado
         String isbn = JOptionPane.showInputDialog("Ingrese el ISBN del libro:");
         if (isbn == null) return;
